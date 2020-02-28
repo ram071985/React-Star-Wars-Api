@@ -9,19 +9,24 @@ class StarWars extends Component {
    constructor() {
        super();
        this.state = {
-           nameOne: "",
-           tableRow: []
+           name: "",
+           birthDate:  "",
+           height: "",
+           mass: "",
+           homeWorld: "",
+           species: "",
+           tableRows: []
        }
    }
 
 
  componentDidMount() {
-    axios.get("https://swapi.co/api/people/1/")
+    axios.get("https://swapi.co/api/people/")
     .then(response => {
-        this.setState({ tableRow: response.data })
-        Object.keys(this.state.tableRow)
-        console.log(this.state.tableRow);
-        this.state.tableRow.map()
+        this.setState({ tableRows: response.data })
+        Object.keys(this.state.tableRows)
+        console.log(this.state.tableRows);
+    
     })
     .catch(error => {
         console.log(error);
@@ -30,88 +35,17 @@ class StarWars extends Component {
     
   }
 
+
   renderTable()  {
       return (
          <Table>
         <tr>
-        <td>{this.state.nameOne}</td>
         <td></td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
       </Table>
       )
