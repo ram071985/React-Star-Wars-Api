@@ -134,7 +134,6 @@ class StarWars extends Component {
     axios.get("https://swapi.co/api/people/8/").then(response => {
       this.setState({ tableRow8: response.data });
       Object.keys(this.state.tableRow8);
-      
     });
 
     axios.get("https://swapi.co/api/planets/1/").then(response => {
@@ -148,17 +147,31 @@ class StarWars extends Component {
     axios.get("https://swapi.co/api/people/9/").then(response => {
       this.setState({ tableRow9: response.data });
       Object.keys(this.state.tableRow9);
-      console.log(this.state.tableRow9);
+      console.log(this.state.tableRow10);
     });
 
     axios.get("https://swapi.co/api/planets/1/").then(response => {
       this.setState({ homeWorldRow9: response.data.name });
     });
 
+    axios.get("https://swapi.co/api/species/1/").then(response => {
+      this.setState({ speciesRow9: response.data.name });
+    });
+
+    axios.get("https://swapi.co/api/people/10/").then(response => {
+      this.setState({ tableRow10: response.data });
+      Object.keys(this.state.tableRow10);
+      console.log(this.state.tableRow10);
+    });
+
+    axios.get("https://swapi.co/api/planets/20/").then(response => {
+      this.setState({ homeWorldRow10: response.data.name });
+    });
+
     axios
       .get("https://swapi.co/api/species/1/")
       .then(response => {
-        this.setState({ speciesRow9: response.data.name });
+        this.setState({ speciesRow10: response.data.name });
       })
 
       .catch(error => {
@@ -282,6 +295,19 @@ class StarWars extends Component {
       </tr>
     );
   }
+
+  renderTableRow10() {
+    return (
+      <tr>
+        <td>{this.state.tableRow10["name"]}</td>
+        <td>{this.state.tableRow10["birth_year"]}</td>
+        <td>{this.state.tableRow10["height"]}</td>
+        <td>{this.state.tableRow10["mass"]}</td>
+        <td>{this.state.homeWorldRow10}</td>
+        <td>{this.state.speciesRow10}</td>
+      </tr>
+    );
+  }
   render() {
     return (
       <Container>
@@ -306,6 +332,7 @@ class StarWars extends Component {
             {this.renderTableRow7()}
             {this.renderTableRow8()}
             {this.renderTableRow9()}
+            {this.renderTableRow10()}
           </tbody>
         </Table>
       </Container>
