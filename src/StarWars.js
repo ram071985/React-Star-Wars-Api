@@ -96,9 +96,26 @@ class StarWars extends Component {
         this.setState({ speciesRow4: response.data.name });
       })
 
-      .catch(error => {
-        console.log(error);
+      axios.get("https://swapi.co/api/people/5/").then(response => {
+        this.setState({ tableRow5: response.data });
+        Object.keys(this.state.tableRow5);
+        console.log(this.state.tableRow5);
       });
+  
+      axios.get("https://swapi.co/api/planets/2/").then(response => {
+        this.setState({ homeWorldRow5: response.data.name });
+      });
+  
+      axios
+        .get("https://swapi.co/api/species/1/")
+        .then(response => {
+          this.setState({ speciesRow5: response.data.name });
+        })
+  
+        .catch(error => {
+          console.log(error);
+        });
+    
   }
 
   renderTableRow1() {
@@ -152,6 +169,19 @@ class StarWars extends Component {
       </tr>
     );
   }
+
+  renderTableRow5() {
+    return (
+      <tr>
+        <td>{this.state.tableRow5["name"]}</td>
+        <td>{this.state.tableRow5["birth_year"]}</td>
+        <td>{this.state.tableRow5["height"]}</td>
+        <td>{this.state.tableRow5["mass"]}</td>
+        <td>{this.state.homeWorldRow5}</td>
+        <td>{this.state.speciesRow5}</td>
+      </tr>
+    );
+  }
   render() {
     return (
       <Container>
@@ -171,6 +201,7 @@ class StarWars extends Component {
             {this.renderTableRow2()}
             {this.renderTableRow3()}
             {this.renderTableRow4()}
+            {this.renderTableRow5()}
           </tbody>
         </Table>
       </Container>
