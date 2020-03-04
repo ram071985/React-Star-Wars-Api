@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Table } from "react-bootstrap";
+import { Container, Table, Pagination } from "react-bootstrap";
 import "./index.css";
 import axios from "axios";
 
@@ -8,6 +8,8 @@ class StarWars extends Component {
   constructor() {
     super();
     this.state = {
+      people: [],
+      total: [],
       tableRow1: [],
       homeWorldRow1: "",
       speciesRow1: "",
@@ -39,10 +41,12 @@ class StarWars extends Component {
     };
   }
 
+  
   componentDidMount() {
-    axios.get("https://swapi.co/api/people/1/").then(response => {
-      this.setState({ tableRow1: response.data });
-      Object.keys(this.state.tableRow1);
+    axios.get("https://swapi.co/api/people/?page=1").then(response => {
+      this.setState({ people: response.data });
+      Object.keys(this.state.people);
+      console.log(this.state.people.results.length);
     });
 
     axios.get("https://swapi.co/api/planets/1/").then(response => {
@@ -308,6 +312,14 @@ class StarWars extends Component {
       </tr>
     );
   }
+
+  loadPagination = (index) => {
+    return (
+      <Pagination key={index}>
+     <Pagination.Item>{1}</Pagination.Item>
+     </Pagination>
+    )
+    }
   render() {
     return (
       <Container>
@@ -335,6 +347,9 @@ class StarWars extends Component {
             {this.renderTableRow10()}
           </tbody>
         </Table>
+        <Pagination>
+          {this.loadPagination}
+        </Pagination>
       </Container>
     );
   }
