@@ -10,23 +10,37 @@ class StarWars extends Component {
     this.state = {
       people: [],
       total: [],
+      homeWorld: [],
       currentPage: 1
     };
   }
 
   
-  componentDidMount() {
+
+
+      componentDidMount() {
     axios.get(`https://swapi.co/api/people/?page=${this.state.currentPage}`).then(response => {
+      response.data.results.forEach(person => {
+        axios.get(person.homeworld).then(hwResponse => {
+          
+          this.setState({ homeWorld: hwResponse.data.name });
+         console.log(this.state.homeWorld)
+        });
+      }); 
       this.setState({ people: response.data.results });
-      Object.keys(this.state.people);
-      console.log(this.state.people);
+      
     })
       .catch(error => {
         console.log(error);
       });
   }
 
-  
+ 
+  renderHomePlanet = () => {
+    const planets = [...this.state.homeWorld]
+    this.setState({homeWorld: planets})
+    console.log(this.state.homeWorld)
+  }
 
 
   /*loadPagination = (index) => {
@@ -45,10 +59,11 @@ class StarWars extends Component {
         <td>{person.birth_year}</td>
         <td>{person.height}</td>
         <td>{person.mass}</td>
-        <td></td>
-        <td></td>
+        <td>{this.state.homeWorld}</td>
+        <td>{person.species}</td>
       </tr>
     )
+
  
     return (
       <Container>
