@@ -22,16 +22,19 @@ class StarWars extends Component {
     const charactersResponse = await 
     axios.get(`https://swapi.co/api/people/?page=${this.state.currentPage}`);
    const characters = []; 
-   console.log(charactersResponse.data.results)
-       
       for (const character of charactersResponse.data.results) {
+        const speciesResponse = await
+        axios.get(character.species);
+        character.species = speciesResponse.data;
         const homeWorldResponse = await
         axios.get(character.homeworld);
          character.homeworld = homeWorldResponse.data;
          characters.push(character);
 
-        }
+      }
+    
       this.setState({ people: characters });
+ 
       
     }
     
@@ -54,8 +57,8 @@ class StarWars extends Component {
         <td>{person.birth_year}</td>
         <td>{person.height}</td>
         <td>{person.mass}</td>
-        <td>{this.state.homeWorld}</td>
-        <td>{person.species}</td>
+        <td>{person.homeworld.name}</td>
+        <td>{person.species.name}</td>
       </tr>
     )
 
