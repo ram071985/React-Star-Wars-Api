@@ -9,61 +9,59 @@ class StarWars extends Component {
     super();
     this.state = {
       people: [],
+      // startPage: 1,
       currentPage: ""
     };
   }
 
-  
-
-
-      async componentDidMount() {
-    const charactersResponse = await 
-    axios.get(`https://swapi.co/api/people/?page=${this.state.currentPage}`);
-   const characters = []; 
-      for (const character of charactersResponse.data.results) {
-        const speciesResponse = await
-        axios.get(character.species);
-        character.species = speciesResponse.data;
-        const homeWorldResponse = await
-        axios.get(character.homeworld);
-         character.homeworld = homeWorldResponse.data;
-         characters.push(character);
-
-      }
-    
-      this.setState({ people: characters });
- 
-      
+  async componentDidMount() {
+    const charactersResponse = await axios.get(
+      `https://swapi.co/api/people/?page=${this.state.currentPage}`
+    );
+    const characters = [];
+    for (const character of charactersResponse.data.results) {
+      const speciesResponse = await axios.get(character.species);
+      character.species = speciesResponse.data;
+      const homeWorldResponse = await axios.get(character.homeworld);
+      character.homeworld = homeWorldResponse.data;
+      characters.push(character);
     }
-    getPage = () => {
-     axios
-    };
-updatePage = (e) => {
-console.log(this.state.currentPage)
-  return (
-    this.setState({ currentPage: e.target.textContent })
-  )
-}
 
+    this.setState({ people: characters });
+  }
 
-  loadPagination = (index) => {
-  
+  async updatePage(e) {
+    const charactersResponse = await axios.get(
+      `https://swapi.co/api/people/?page=${e.target.textContent}`
+    );
+    const characters = [];
+    for (const character of charactersResponse.data.results) {
+      const speciesResponse = await axios.get(character.species);
+      character.species = speciesResponse.data;
+      const homeWorldResponse = await axios.get(character.homeworld);
+      character.homeworld = homeWorldResponse.data;
+      characters.push(character);
+    }
+    this.setState({ people: characters });
+  }
+
+  loadPagination = index => {
     return (
       <Pagination key={index}>
-     <Pagination.Item onClick={this.updatePage}>1</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>2</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>3</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>4</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>5</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>6</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>7</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>8</Pagination.Item>
-     <Pagination.Item onClick={this.updatePage}>9</Pagination.Item>
-     </Pagination>
-    )
-    }
+        <Pagination.Item onClick={this.updatePage}>1</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>2</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>3</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>4</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>5</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>6</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>7</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>8</Pagination.Item>
+        <Pagination.Item onClick={this.updatePage}>9</Pagination.Item>
+      </Pagination>
+    );
+  };
   render() {
-  const rows = this.state.people.map(person => 
+    const rows = this.state.people.map(person => (
       <tr>
         <td>{person.name}</td>
         <td>{person.birth_year}</td>
@@ -72,9 +70,8 @@ console.log(this.state.currentPage)
         <td>{person.homeworld.name}</td>
         <td>{person.species.name}</td>
       </tr>
-    )
+    ));
 
- 
     return (
       <Container>
         <Table responsive className="mt-4 table">
@@ -88,11 +85,9 @@ console.log(this.state.currentPage)
               <th>Species</th>
             </tr>
           </thead>
-          <tbody>
-          {rows}
-          </tbody>
+          <tbody>{rows}</tbody>
         </Table>
-       {this.loadPagination()}
+        {this.loadPagination()}
       </Container>
     );
   }
