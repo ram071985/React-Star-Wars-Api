@@ -9,9 +9,7 @@ class StarWars extends Component {
     super();
     this.state = {
       people: [],
-      total: [],
-      homeWorld: [],
-      currentPage: 1
+      currentPage: ""
     };
   }
 
@@ -37,19 +35,33 @@ class StarWars extends Component {
  
       
     }
-    
+    getPage = () => {
+     axios
+    };
+updatePage = (e) => {
+console.log(this.state.currentPage)
+  return (
+    this.setState({ currentPage: e.target.textContent })
+  )
+}
 
 
-
-  /*loadPagination = (index) => {
+  loadPagination = (index) => {
+  
     return (
       <Pagination key={index}>
-     <Pagination.Item onClick={}>1</Pagination.Item>
-     <Pagination.Item onClick={}>2</Pagination.Item>
-
+     <Pagination.Item onClick={this.updatePage}>1</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>2</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>3</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>4</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>5</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>6</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>7</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>8</Pagination.Item>
+     <Pagination.Item onClick={this.updatePage}>9</Pagination.Item>
      </Pagination>
     )
-    }*/
+    }
   render() {
   const rows = this.state.people.map(person => 
       <tr>
@@ -80,8 +92,7 @@ class StarWars extends Component {
           {rows}
           </tbody>
         </Table>
-        <Pagination>
-        </Pagination>
+       {this.loadPagination()}
       </Container>
     );
   }
