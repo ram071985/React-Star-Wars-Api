@@ -15,7 +15,7 @@ The Star Wars Character api app I created was motivated by my desire to learn mo
 - Loading notification while awating api response
 - Api results paginated for a more organized and uniform viewing experience
 - Built with the popular javascript framework React
-- Mobile-First design practice
+- Mobile-First design practices
 
 
 ## Author 
