@@ -9,7 +9,6 @@ class StarWars extends Component {
     super();
     this.state = {
       people: [],
-      // startPage: 1,
       currentPage: "",
       loading: false
     };
@@ -29,10 +28,10 @@ class StarWars extends Component {
       characters.push(character);
     }
 
-    this.setState({ 
+    this.setState({
       people: characters,
-      loading: false   });
-    
+      loading: false
+    });
   }
 
   updatePage = async e => {
