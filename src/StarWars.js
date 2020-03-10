@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Table, Pagination } from "react-bootstrap";
 import "./index.css";
 import axios from "axios";
+import 'font-awesome/css/font-awesome.min.css';
 
 class StarWars extends Component {
   constructor() {
