@@ -16,10 +16,10 @@ class StarWars extends Component {
   }
 
   async componentDidMount() {
+    this.setState({ loading: true });
     const charactersResponse = await axios.get(
       `https://swapi.co/api/people/?page=${this.state.currentPage}`
     );
-    this.setState({ loading: true });
     const characters = [];
     for (const character of charactersResponse.data.results) {
       const speciesResponse = await axios.get(character.species);
@@ -29,7 +29,10 @@ class StarWars extends Component {
       characters.push(character);
     }
 
-    this.setState({ people: characters });
+    this.setState({ 
+      people: characters,
+      loading: false   });
+    
   }
 
   updatePage = async e => {
