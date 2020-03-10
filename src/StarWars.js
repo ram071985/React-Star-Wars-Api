@@ -10,7 +10,8 @@ class StarWars extends Component {
     this.state = {
       people: [],
       // startPage: 1,
-      currentPage: ""
+      currentPage: "",
+      loading: false
     };
   }
 
@@ -18,6 +19,7 @@ class StarWars extends Component {
     const charactersResponse = await axios.get(
       `https://swapi.co/api/people/?page=${this.state.currentPage}`
     );
+    this.setState({ loading: true });
     const characters = [];
     for (const character of charactersResponse.data.results) {
       const speciesResponse = await axios.get(character.species);
@@ -30,7 +32,8 @@ class StarWars extends Component {
     this.setState({ people: characters });
   }
 
-  async updatePage(e) {
+  updatePage = async e => {
+    this.setState({ loading: true });
     const charactersResponse = await axios.get(
       `https://swapi.co/api/people/?page=${e.target.textContent}`
     );
@@ -42,8 +45,11 @@ class StarWars extends Component {
       character.homeworld = homeWorldResponse.data;
       characters.push(character);
     }
-    this.setState({ people: characters });
-  }
+    this.setState({
+      people: characters,
+      loading: false
+    });
+  };
 
   loadPagination = index => {
     return (
@@ -60,6 +66,15 @@ class StarWars extends Component {
       </Pagination>
     );
   };
+
+  LoadingSpinner = () => {
+    return (
+      <div>
+        <i className="fa fa-spinner fa-spin" /> Loading...
+      </div>
+    );
+  };
+
   render() {
     const rows = this.state.people.map(person => (
       <tr>
@@ -72,6 +87,7 @@ class StarWars extends Component {
       </tr>
     ));
 
+    const { loading } = this.state;
     return (
       <Container>
         <Table responsive className="mt-4 table">
@@ -85,7 +101,7 @@ class StarWars extends Component {
               <th>Species</th>
             </tr>
           </thead>
-          <tbody>{rows}</tbody>
+          <tbody>{loading ? this.LoadingSpinner() : rows}</tbody>
         </Table>
         {this.loadPagination()}
       </Container>
