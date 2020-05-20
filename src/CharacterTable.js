@@ -20,7 +20,7 @@ class CharacterTable extends Component {
   loadCharacters = async pageNumber => {
     this.setState({ loading: true });
     const charactersResponse = await axios.get(
-      `http://swapi.dev/api/people/?page=${pageNumber}`
+      `https://swapi.dev/api/people/?page=${pageNumber}`
     );
     const characters = [];
     for (const character of charactersResponse.data.results) {
