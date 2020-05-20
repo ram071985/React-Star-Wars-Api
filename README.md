@@ -1,6 +1,6 @@
 # Star Wars Character API (React)
 
-App built with React and bootstrap that uses axios to pull data from the star wars character api called swapi.co based on the popular movie Star Wars.  The character results come back with data about each character and are organized with pagination. See my deployed version on Heroku - [HERE](https://shielded-headland-50763.herokuapp.com/) or open-source here at my remote repostiory [Github](https://github.com/ram071985/star-wars-api)
+App built with React and bootstrap that using axios to pull data from the swapi.co Star Wars Character API.  See my deployed version on Heroku - [HERE](https://shielded-headland-50763.herokuapp.com/) or open-source here at my remote repostiory [Github](https://github.com/ram071985/star-wars-api)
 
 ![](star-wars-api.png)
 
