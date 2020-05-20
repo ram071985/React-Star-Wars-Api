@@ -36,6 +36,7 @@ class CharacterTable extends Component {
       people: characters,
       loading: false
     });
+    console.log(charactersResponse.data)
   };
 
   async componentDidMount() {
