@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import { Pagination } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class PaginationBar extends Component {
-
-    
   render() {
-      const pages = [];
+    const pages = [];
 
-      for (let i = 0; i < Math.round(this.count / 10); i++) {
-          pages.push(<Pagination.Item onClick={this.props.updatePage}>{i}</Pagination.Item>);
-      }
+    for (let i = 1; i < Math.round(this.props.count / 8); i++) {
+      pages.push(
+        <Pagination.Item key={i} onClick={this.props.updatePage}>
+          {i}
+        </Pagination.Item>
+      );
+    }
 
-    return(
-        <Pagination>
-            {pages}
-      </Pagination>
-    );
+    return <Pagination>{pages}</Pagination>;
   }
 }
 
