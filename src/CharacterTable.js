@@ -26,8 +26,15 @@ class CharacterTable extends Component {
     for (const character of charactersResponse.data.results) {
       const speciesResponse = await axios.get(character.species);
       character.species = speciesResponse.data;
-      const homeWorldResponse = await axios.get(character.homeworld);
+      console.log(charactersResponse.data.results);
+      console.log(charactersResponse.data);
+      const config = {
+        baseURL: 'https://swapi.dev/'
+      };
+      const homeWorldResponse = await axios.get(character.homeworld, + config);
       character.homeworld = homeWorldResponse.data;
+      console.log(homeWorldResponse);
+ 
       characters.push(character);
     }
 
@@ -36,7 +43,6 @@ class CharacterTable extends Component {
       people: characters,
       loading: false
     });
-    console.log(charactersResponse.data)
   };
 
   async componentDidMount() {
@@ -68,7 +74,6 @@ class CharacterTable extends Component {
         <td>{person.species.name}</td>
       </tr>
     ));
-
     const { loading } = this.state;
     return (
       <Container>
