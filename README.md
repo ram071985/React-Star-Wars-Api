@@ -10,7 +10,7 @@ The Star Wars Character api app I created was motivated by my desire to learn mo
 
 ## Local Installation Directions
 
-First install the project dependencies and scripts.  In the directory run the command:
+First install the project dependencies and scripts.  In the root directory run the command:
 
 ```
 npm i
