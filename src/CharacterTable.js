@@ -17,10 +17,10 @@ class CharacterTable extends Component {
     };
   }
 
-  addHttps = (url) => {
-    let str = url;
-    let res = str.replace(/http:/g, "https:");
-    return res;
+   addHttps = (url) => {
+     let str = url;
+   return str.toString().replace(/http:/g, "https:");
+ 
 }
 
   loadCharacters = async pageNumber => {
@@ -30,7 +30,7 @@ class CharacterTable extends Component {
     );
     const characters = [];
     for (const character of charactersResponse.data.results) {
-      const speciesResponse = await axios.get(character.species);
+      const speciesResponse = await axios.get(this.addHttps(character.species));
       character.species = speciesResponse.data;
       const homeWorldResponse = await axios.get(this.addHttps(character.homeworld));
       character.homeworld = homeWorldResponse.data;
