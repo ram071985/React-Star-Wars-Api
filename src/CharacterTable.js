@@ -17,6 +17,12 @@ class CharacterTable extends Component {
     };
   }
 
+  addHttps = (url) => {
+    let str = url;
+    let res = str.replace(/http:/g, "https:");
+    return res;
+}
+
   loadCharacters = async pageNumber => {
     this.setState({ loading: true });
     const charactersResponse = await axios.get(
@@ -26,15 +32,8 @@ class CharacterTable extends Component {
     for (const character of charactersResponse.data.results) {
       const speciesResponse = await axios.get(character.species);
       character.species = speciesResponse.data;
-      console.log(charactersResponse.data.results);
-      console.log(charactersResponse.data);
-      const config = {
-        baseURL: 'https://swapi.dev/'
-      };
-      const homeWorldResponse = await axios.get(character.homeworld, + config);
+      const homeWorldResponse = await axios.get(this.addHttps(character.homeworld));
       character.homeworld = homeWorldResponse.data;
-      console.log(homeWorldResponse);
- 
       characters.push(character);
     }
 
