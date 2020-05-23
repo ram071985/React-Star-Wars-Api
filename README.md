@@ -1,4 +1,4 @@
-# Star Wars Character API (React.js)
+# Star Wars Character API (React.js, Bootstrap)
 
 App built with React and bootstrap that using axios to pull data from the swapi.co Star Wars Character API.  
 
