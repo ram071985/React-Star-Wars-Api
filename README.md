@@ -10,8 +10,17 @@ The Star Wars Character api app I created was motivated by my desire to learn mo
 
 ## Local Installation Directions
 
-- run npm i in root directory to install scripts
-- run npm run start to load app
+First install the project dependencies and scripts.  In the directory run the command:
+
+```
+npm i
+```
+
+Then to run the app on your system use the command:
+
+```
+npm run start
+```
 
 ## Features
 
