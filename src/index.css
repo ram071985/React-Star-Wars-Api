@@ -3,7 +3,8 @@
 body {
   font-family: "Space Mono", sans-serif;
   background-color: black;
-  background-image: url("stars.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+  rgba(0, 0, 0, 0.5)), url("stars.jpg");
   background-size: cover;
 }
 
