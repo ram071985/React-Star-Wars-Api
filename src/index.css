@@ -3,6 +3,8 @@
 body {
   font-family: "Space Mono", sans-serif;
   background-color: black;
+  background-image: url("stars.jpg");
+  background-size: cover;
 }
 
 .title-text {
