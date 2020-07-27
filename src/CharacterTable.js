@@ -13,7 +13,8 @@ class CharacterTable extends Component {
       count: 0,
       people: [],
       currentPage: "",
-      loading: false
+      loading: false,
+      speciesUnknown: ""
     };
   }
 
@@ -63,7 +64,6 @@ class CharacterTable extends Component {
   };
 
   render() {
-    console.log(this.state.people);
     const rows = this.state.people.map((person, index) => (
       <tr key={index}>
         <td>{person.name}</td>
