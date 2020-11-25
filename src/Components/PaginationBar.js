@@ -13,7 +13,7 @@ class PaginationBar extends Component {
       );
     }
 
-    return <Pagination>{pages}</Pagination>;
+    return <Pagination className="pagination">{pages}</Pagination>;
   }
 }
 

@@ -3,17 +3,39 @@
 body {
   font-family: "Space Mono", sans-serif;
   background-color: black;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-  rgba(0, 0, 0, 0.5)), url("./Images/stars.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.72),
+  rgba(0, 0, 0, 0.72)), url("./Images/stars.jpg");
   background-size: cover;
 }
 
 .title-text {
   font-size: 2.3rem;
-  color: white;
+  color: rgb(240, 240, 240);
   opacity: 0.9;
 }
 
 .table {
   color: yellow;
+}
+
+.page-link {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  color: rgb(228, 228, 228);
+  overflow: hidden;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+ul.pagination li a:hover {
+  background-color: rgba(44, 44, 44, 0.5);
+  border-color: rgba(148, 148, 148, 0.5);
+  color: rgb(192, 192, 192);;
+}
+
+li {
+  margin-right: 7px;
+}
+
+.header-row {
+  color: rgb(240, 240, 240);
 }

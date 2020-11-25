@@ -78,7 +78,7 @@ class CharacterTable extends Component {
       <Container>
         <Table responsive className="mt-4 table">
           <thead>
-            <tr>
+            <tr className="header-row">
               <th>Name</th>
               <th>Birth Date</th>
               <th>Height</th>
