@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Table } from "react-bootstrap";
-import "./index.css";
 import axios from "axios";
 import "font-awesome/css/font-awesome.min.css";
 import PaginationBar from "./PaginationBar.js";

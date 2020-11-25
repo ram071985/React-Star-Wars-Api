@@ -1,8 +1,8 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Container} from "react-bootstrap";
-import Header from "./Header.js";
-import CharacterTable from "./CharacterTable.js";
+import Header from "./Components/Header.js";
+import CharacterTable from "./Components/CharacterTable.js";
 
 
 
