@@ -4,7 +4,7 @@ App built with React and bootstrap that using axios to pull data from the swapi.
 
 See my deployed version on Heroku - [HERE](https://reid-star-wars.herokuapp.com/) or open-source here at my remote repostiory [Github](https://github.com/ram071985/star-wars-api)
 
-![](star_wars_big.png)
+![](./src/Images/star_wars_big.png)
 
 ## Summary
 
