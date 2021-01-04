@@ -35,6 +35,7 @@ class CharacterTable extends Component {
       );
       character.homeworld = homeWorldResponse.data;
       characters.push(character);
+      console.log(charactersResponse.data.results);
     }
 
     this.setState({
