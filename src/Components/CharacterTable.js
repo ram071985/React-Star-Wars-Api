@@ -31,7 +31,7 @@ class CharacterTable extends Component {
       if (!character.species[0]) {
         character.species = {name: "Human"};
       } else {
-        const speciesResponse = await axios.get(character.species);
+        const speciesResponse = await axios.get(this.addHttps(character.species));
         character.species = speciesResponse.data;
       }
 
