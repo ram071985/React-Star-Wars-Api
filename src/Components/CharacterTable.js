@@ -13,35 +13,40 @@ class CharacterTable extends Component {
       people: [],
       currentPage: "",
       loading: false,
-      speciesUnknown: ""
+      speciesUnknown: "",
     };
   }
 
-  addHttps = url => {
+  addHttps = (url) => {
     return url.toString().replace(/http:/g, "https:");
   };
 
-  loadCharacters = async pageNumber => {
+  loadCharacters = async (pageNumber) => {
     this.setState({ loading: true });
     const charactersResponse = await axios.get(
       `https://swapi.dev/api/people/?page=${pageNumber}`
     );
     const characters = [];
     for (const character of charactersResponse.data.results) {
-      const speciesResponse = await axios.get(this.addHttps(character.species));
-      character.species = speciesResponse.data;
+      if (!character.species[0]) {
+        character.species = {name: "Human"};
+      } else {
+        const speciesResponse = await axios.get(character.species);
+        character.species = speciesResponse.data;
+      }
+
       const homeWorldResponse = await axios.get(
         this.addHttps(character.homeworld)
       );
       character.homeworld = homeWorldResponse.data;
       characters.push(character);
-      console.log(characte);
+      console.log(character);
     }
 
     this.setState({
       count: charactersResponse.data.count,
       people: characters,
-      loading: false
+      loading: false,
     });
   };
 
@@ -49,7 +54,7 @@ class CharacterTable extends Component {
     this.loadCharacters(this.state.currentPage);
   }
 
-  updatePage = async e => {
+  updatePage = async (e) => {
     this.loadCharacters(e.target.textContent);
   };
 
